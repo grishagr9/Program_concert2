@@ -40,7 +40,9 @@ namespace Program_concert
             myToolTip.SetToolTip(CountTime, "Рассчитывает время нового плейлиста");
             myToolTip.SetToolTip(buttonView, "Показать все подходящие под фильтры треки");
             myToolTip.SetToolTip(CountTime, "Рассчитывает время нового плейлиста");
-
+            myToolTip.SetToolTip(label2, "Указывайте нижний порог в секундах - целое число");
+            myToolTip.SetToolTip(label3, "Указывайте верхний порог в секундах - целое число");
+            myToolTip.SetToolTip(label1, "Обязательно указывайте и верхний порог и нижний");
         }
         /// <summary>
         /// добавляем в список весь репертуар
@@ -132,6 +134,12 @@ namespace Program_concert
             catch (Exception) {
                 low = 0;
                 up = 1000;
+                if (textBoxLow.Text != "" || textBoxUp.Text != "")
+                {
+                    MessageBox.Show("Неправильно ввели верхний или нижний пороги длительности", "ERRORRR!!!!", MessageBoxButtons.OKCancel);
+                    textBoxLow.Text = "";
+                    textBoxUp.Text = "";
+                }
             }
             foreach (CheckBox item in checkBoxes)
             {
